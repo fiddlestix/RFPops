@@ -1,11 +1,8 @@
 from mongoengine import Document
 from mongoengine import StringField
 from mongoengine import DateTimeField
-from mongoengine import connect
-from datetime import datetime
 
-# change this later to use config files or something!
-DATABASE_NAME = 'testdb'
+from datetime import datetime
 
 
 class Entry(Document):
@@ -16,6 +13,5 @@ class Entry(Document):
 
 
 def add_entry(quest, ans, name):
-    connect(DATABASE_NAME)
     entry = Entry(question=quest, answer=ans, customer_name=name, date_added=datetime.now())
     entry.save()
