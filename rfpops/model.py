@@ -14,6 +14,12 @@ class Entry(Document):
     customer_name = StringField(required=True)
     date_added = DateTimeField(required=True)
 
+    meta = {'indexes': [
+        {'fields': ['$question', '$answer', '$customer_name'],
+         'default_language': 'english',
+         'weights': {'question': 10, 'answer': 9, 'name': 8}}
+    ]}
+
 
 def add_entry(quest, ans, name):
     entry = Entry(question=quest, answer=ans, customer_name=name, date_added=datetime.now())
@@ -26,3 +32,8 @@ def add_from_csv(filename):
         for row in reader:
             entry = Entry(row['question'], row['answer'], row['customer_name'], row['date_added'])
             entry.save()
+
+
+def search_entries(string):
+    results = Entry.objects.search_text(string).order_by('$text_score')
+    return results

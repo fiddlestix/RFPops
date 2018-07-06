@@ -18,4 +18,8 @@ def app_factory():
 
     webbrowser.open('http://127.0.0.1:5000/')
 
+    # testing the search function... delete later!
+    import rfpops.model
+    print(model.search_entries("quest"))
+
     return app
