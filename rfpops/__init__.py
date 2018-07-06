@@ -9,6 +9,7 @@ DATABASE_NAME = 'testdb'
 
 def app_factory():
     app = Flask(__name__)
+
     connect(DATABASE_NAME)
 
     @app.route('/')
