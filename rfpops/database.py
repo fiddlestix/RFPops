@@ -17,5 +17,6 @@ def add_from_csv(filename):
 
 
 def search_entries(string):
-    results = Entry.objects.search_text(string).order_by('$text_score')
+    from mongoengine import QuerySet
+    results = QuerySet.search_text(Entry.objects, string)
     return results
