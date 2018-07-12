@@ -14,7 +14,21 @@ def app_factory():
 
     @app.route('/')
     def index():
-        return render_template('index.html')
+        from rfpops.database import get_recent_entries
+        recent = get_recent_entries()
+        return render_template('index.html', recent_entries=recent)
+
+    @app.route('/add')
+    def add():
+        return render_template('add.html')
+
+    @app.route('/explore')
+    def explore():
+        return render_template('explore.html')
+
+    @app.route('/search')
+    def search():
+        return render_template('search.html')
 
     webbrowser.open('http://127.0.0.1:5000/')
 

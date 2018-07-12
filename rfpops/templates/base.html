@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RFPops - RFP/RFI Search Tool</title>
+    <style>
+        #bar {
+            background-color: #deeaee;
+            border: 1px solid #b1cbbb;
+            list-style-type: none;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #bar li {
+            display: inline-block;
+        }
+
+        li a {
+            color: black;
+            padding: 8px 16px;
+            display: block;
+            text-decoration:none;
+        }
+
+        body {
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+        }
+
+        li {
+            text-align: center;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #b1cbbb;
+            color: black;
+        }
+
+    </style>
+</head>
+<body style="text-align:center;">
+    <h1 style="color:black;">RFPops - A Simple RFP/RFI Search Tool</h1>
+    <ul id="bar">
+        <li><a href="/">Home</a></li>
+        <li><a href="/add">Add</a></li>
+        <li><a href="/explore">Explore</a></li>
+        <li><a href="/search">SEARCH</a></li>
+    </ul>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

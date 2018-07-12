@@ -1,11 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>RFP Search Tool</title>
-</head>
-<body>
-    <h2>RFP/RFI Database Search</h2>
-    <p>Under construction...</p>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        #recent {
+            display: block;
+            width: 100%;
+            list-style-type:none;
+            margin:0;
+            padding:0;
+        }
+
+        li a {
+            text-decoration:none;
+        }
+
+    </style>
+    <h2>Most recent entries:</h2>
+    <table style="width:100%">
+        <tr>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Name</th>
+            <th>Date Added</th>
+        </tr>
+        {% for entry in recent_entries %}
+        {% if loop.index is divisibleby 2 %}
+        <tr style="background-color:#eea29a;">
+        {% else %}
+        <tr style="background-color:#f7786b;">
+        {% endif %}
+            <td>{{ entry.question }}</td>
+            <td>{{ entry.answer }}</td>
+            <td>{{ entry.customer_name }}</td>
+            <td>{{ entry.date_added }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
