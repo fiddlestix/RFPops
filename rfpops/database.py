@@ -1,6 +1,7 @@
 from datetime import datetime
 import csv
 from rfpops.model import Entry
+from mongoengine import QuerySet
 
 
 def add_entry(quest, ans, name):
@@ -17,13 +18,11 @@ def add_from_csv(filename):
 
 
 def search_entries(string):
-    from mongoengine import QuerySet
     results = QuerySet.search_text(Entry.objects, string)
     return results
 
 
 def get_recent_entries():
-    from mongoengine import QuerySet
-    recent = QuerySet.order_by(Entry.objects, 'datetime')
+    recent = Entry.objects.order_by('-date_added')
     recent_trimmed = recent[:5]
-    return recent
+    return recent_trimmed

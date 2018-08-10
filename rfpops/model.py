@@ -9,10 +9,11 @@ class Entry(Document):
     customer_name = StringField(required=True)
     date_added = DateTimeField(required=True)
 
-    meta = {'indexes': [
-        {'fields': ['$question', '$answer', '$customer_name'],
-         'default_language': 'english',
-         'weights': {'question': 10, 'answer': 9, 'name': 8}}
-    ]}
+    meta = {
+        'indexes': [
+            {'fields': ['$question', '$answer', '$customer_name'],
+             'default_language': 'english',
+             'weights': {'question': 10, 'answer': 9, 'name': 8}}],
+    }
 
 

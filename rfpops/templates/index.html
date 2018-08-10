@@ -27,12 +27,12 @@
         {% if loop.index is divisibleby 2 %}
         <tr style="background-color:#eea29a;">
         {% else %}
-        <tr style="background-color:#f7786b;">
+        <tr style="background-color:#b1cbbb;">
         {% endif %}
             <td>{{ entry.question }}</td>
             <td>{{ entry.answer }}</td>
             <td>{{ entry.customer_name }}</td>
-            <td>{{ entry.date_added }}</td>
+            <td>{{ entry.date_added.strftime('%Y-%m-%d %H:%M:%S') }}</td>
         </tr>
         {% endfor %}
     </table>
